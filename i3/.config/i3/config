@@ -1,7 +1,7 @@
 set $mod Mod4
 
 exec --no-startup-id setxkbmap -model abnt2 -layout br
-#exec --no-startup-id picom
+exec --no-startup-id picom
 exec --no-startup-id polybar
 exec --no-startup-id feh --bg-scale $HOME/.config/i3/default.jpg
 exec --no-startup-id redshift -O 4800:4800
@@ -17,6 +17,10 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i2lock --nofork
 exec --no-startup-id nm-applet
 
+# windows
+gaps inner 5
+gaps outer 5
+
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
@@ -27,7 +31,7 @@ floating_modifier $mod
 
 tiling_drag modifier titlebar
 
-bindsym $mod+Return exec kitty 
+bindsym $mod+Return exec alacritty 
 bindsym $mod+n exec brave
 
 bindsym $mod+x kill

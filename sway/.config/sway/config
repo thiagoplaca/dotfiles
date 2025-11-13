@@ -7,7 +7,7 @@ set $down j
 set $up k
 set $right l
 
-set $term kitty
+set $term alacritty 
 set $menu rofi -show drun
 set $filemanager thunar 
 set $browser brave
@@ -18,28 +18,30 @@ output * bg ~/.config/i3/default.jpg fill
 # Monitors
 output HDMI-A-1 resolution 2560x1080 position 0,0
 output DP-1 resolution 1360x768 position 2560,0
-#
+
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 # Blue Light Filter
 exec gammastep
+
+# Notifications
 exec swaync
 
-default_border none
+# AutoStart
+exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
+
+default_border pixel 4 
 gaps outer 5
-gaps inner 5 
-### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+gaps inner 5
+
+## Idle configuration
+
+exec swayidle -w \
+        timeout 600 'swaylock -C ~/.config/swaylock/config' \
+        timeout 800 'swaymsg "output * power off"' \
+        resume 'swaymsg "output * power on"' \
+        before-sleep 'swaylock -C ~/.config/swaylock/config' 
+
 
 ### Input configuration
 #
@@ -76,6 +78,9 @@ input type:keyboard {
 
     # Browser
     bindsym $mod+n exec $browser
+
+    # Calculator
+    for_window [app_id="org.gnome.Calculator"] floating enable
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
