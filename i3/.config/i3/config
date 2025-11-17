@@ -11,6 +11,7 @@ exec --no-startup-id gnome-keyring-daemon --start --components=secrets,ssh,gpg,p
 
 # Screenshots
 bindsym Print exec --no-startup-id maim --select "/home/$USER/Imagens/$(date '+%H:%M-%d.%m.%y').png"
+bindsym Shift+Print exec --no-startup-id maim "/home/$USER/Imagens/$(date '+%H:%M-%d.%m.%y').png"
 
 font pango:Ubuntu Regular 12
 exec --no-startup-id dex --autostart --environment i3
