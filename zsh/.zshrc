@@ -13,7 +13,7 @@ alias cc="clear"
 alias dev="cd /home/thiago/Dev"
 alias ~="cd /home/thiago"
 alias studio="/home/thiago/.AUR/android-studio/bin/studio"
-alias sus="systemctl suspend"
+alias sus="loginctl suspend"
 
 # Disable zsh correct
 unsetopt correct_all
@@ -33,7 +33,7 @@ source ~/.powerlevel10k/powerlevel10k.zsh-theme
 # ZSH Syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
 
-eval "$(mise activate zsh)"
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+eval "$(/home/thiago/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
