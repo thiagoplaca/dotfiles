@@ -11,9 +11,9 @@ alias szshrc="source ~/.zshrc"
 alias kitty="nvim ~/.config/kitty/kitty.conf"
 alias cc="clear"
 alias dev="cd /home/thiago/Dev"
-alias ~="cd /home/thiago"
 alias studio="/home/thiago/.AUR/android-studio/bin/studio"
-alias sus="loginctl suspend"
+alias sus="systemctl suspend"
+alias keymap="setxkbmap -layout us -variant intl"
 
 # Disable zsh correct
 unsetopt correct_all
@@ -37,3 +37,4 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 eval "$(/home/thiago/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
+
