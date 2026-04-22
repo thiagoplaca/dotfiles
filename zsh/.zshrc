@@ -14,27 +14,21 @@ alias dev="cd /home/thiago/Dev"
 alias studio="/home/thiago/.AUR/android-studio/bin/studio"
 alias sus="systemctl suspend"
 alias keymap="setxkbmap -layout us -variant intl"
+alias abnt2="setxkbmap -model abnt2 -layout br"
 
 # Disable zsh correct
 unsetopt correct_all
-
 DISABLE_AUTO_TITLE='true'
-
-## Android Studio
-#export ANDROID_HOME=$HOME/Android/Sdk
-#export PATH=$PATH:$ANDROID_HOME/emulator
-#export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # yt-dlp
 alias ytdl="yt-dlp -o '/home/thiago/Downloads/%(title)s.%(ext)s' --merge-output-format"
 
 source ~/.powerlevel10k/powerlevel10k.zsh-theme
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Mise
+eval "$(/home/thiago/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
 
 # ZSH Syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-eval "$(/home/thiago/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
 

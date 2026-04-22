@@ -1,5 +1,5 @@
 general.import = [
-   "~/.config/alacritty/catppuccin-frappe.toml"
+   "~/.cofig/alacritty/catppuccin-frappe.toml"
 ] 
 
 general.live_config_reload = true
@@ -19,7 +19,7 @@ decorations = "none"
 save_to_clipboard = true
 
 [font]
-size = 13
+size = 12
 normal={ family = "JetBrains Mono Nerd Font", style = "Regular" }
 offset={ x = 0, y = 2 }
 

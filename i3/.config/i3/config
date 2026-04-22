@@ -10,7 +10,7 @@ exec --no-startup-id dbus-update-activation-environment --all
 exec --no-startup-id gnome-keyring-daemon --start --components=secrets,ssh,gpg,pkcs11
 
 # Screenshots
-bindsym F9 exec --no-startup-id maim --select "/home/$USER/Imagens/$(date '+%H:%M-%d.%m.%y').png"
+bindsym F9 exec --no-startup-id maim --select "/home/$USER/Imagens/$(date '+%Y-%m-%d_%H:%M:%S').png"
 bindsym F8 exec --no-startup-id maim "/home/$USER/Imagens/$(date '+%H:%M-%d.%m.%y').png"
 
 font pango:Ubuntu Regular 12
@@ -21,6 +21,17 @@ exec --no-startup-id nm-applet
 # windows
 gaps inner 5
 gaps outer 5
+
+set $fg-focus    #68c3b7
+set $bg-focus    #68c3b7
+set $text-focus  #222222
+set $indicator   #ffffff
+
+for_window [class="^.*"] border pixel 2 
+
+# class            border      backgr.     text         indicator   child_border
+client.focused     $fg-focus   $bg-focus   $text-focus  $indicator  $fg-focus
+client.unfocused   #333333     #222222     #888888      #222222     #222222
 
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
