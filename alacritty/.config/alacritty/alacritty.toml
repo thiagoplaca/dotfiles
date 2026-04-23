@@ -1,0 +1,33 @@
+general.import = [
+   "~/.cofig/alacritty/catppuccin-frappe.toml"
+] 
+
+general.live_config_reload = true
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+dynamic_padding = true
+padding.x = 5 
+padding.y = 5
+opacity = 0.5
+blur = true
+decorations = "none"
+
+[selection]
+save_to_clipboard = true
+
+[font]
+size = 12
+normal={ family = "JetBrains Mono Nerd Font", style = "Regular" }
+offset={ x = 0, y = 2 }
+
+[keyboard]
+bindings = [
+
+	{ key = "V", mods = "Control|Shift", action = "Paste" }
+]
+
+[debug]
+log_level = "Error"
