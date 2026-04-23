@@ -1,0 +1,16 @@
+image=/home/thiago/.config/i3/default.jpg
+
+clock
+indicator
+
+key-hl-color=00000066
+separator-color=00000000
+
+indicator-radius=120
+indicator-thickness=10
+indicator-caps-lock
+
+ring-color=ffffff
+inside-color=00000033
+line-color=00000000
+text-color=ffffff

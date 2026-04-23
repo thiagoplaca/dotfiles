@@ -1,5 +1,15 @@
-# Logo key. Use Mod1 for Alt.
 set $mod Mod4
+
+exec gammastep
+exec swaync
+exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
+exec wl-paste --watch cliphist store
+
+exec swayidle -w \
+       timeout 60 'swaylock -f' \
+       timeout 100 'swaymsg "output * power off"' \
+       resume 'swaymsg "output * power on"' \
+       before-sleep 'swaylock -f'
 
 # Home row direction keys, like vim
 set $left h
@@ -12,75 +22,36 @@ set $menu rofi -show drun
 set $filemanager thunar 
 set $browser brave
 
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/.config/i3/default.jpg fill
-
-# Monitors
 output HDMI-A-1 resolution 2560x1080 position 0,0
 output DP-1 resolution 1360x768 position 2560,0
+output * bg ~/.config/sway/default.jpg fill
 
-# You can get the names of your outputs by running: swaymsg -t get_outputs
+bindsym $mod+x kill
+bindsym $mod+d exec $menu
+bindsym $mod+t exec $filemanager
+bindsym $mod+n exec $browser
+bindsym $mod+p exec cliphist list | rofi -dmenu "Clipboard"| cliphist decode | wl-copy
+bindsym F9 exec grim -g "$(slurp)" ~/Imagens/$(date '+%d-%m-%Y_%H-%M-%S').png
+bindsym $mod+Return exec $term
 
-# Blue Light Filter
-exec gammastep
-
-# Notifications
-exec swaync
-
-# AutoStart
-exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
-
-default_border pixel 4 
 gaps outer 5
 gaps inner 5
 
-## Idle configuration
+set $fg-focus    #89b4fa
+set $bg-focus    #89b4fa
+set $text-focus  #222222
+set $indicator   #ffffff
 
-exec swayidle -w \
-        timeout 600 'swaylock -C ~/.config/swaylock/config' \
-        timeout 800 'swaymsg "output * power off"' \
-        resume 'swaymsg "output * power on"' \
-        before-sleep 'swaylock -C ~/.config/swaylock/config' 
+# class            border      backgr.     text         indicator   child_border
+client.focused     $fg-focus   $bg-focus   $text-focus  $indicator  $fg-focus
+client.unfocused   #333333     #222222     #888888      #222222     #222222
 
-
-### Input configuration
-#
-# Example configuration:
-#
-#   input type:touchpad {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
 input type:keyboard {
-   xkb_layout "br"
-   xkb_variant abnt2
-   xkb_numlock enabled
+   xkb_layout "us"
+   xkb_variant intl
 }
-#
-# You can also configure each device individually.
-# Read `man 5 sway-input` for more information about this section.
 
-### Key bindings
-    # Start a terminal
-    bindsym $mod+q exec $term
-
-    # Kill focused window
-    bindsym $mod+x kill
-
-    # Start your launcher
-    bindsym $mod+d exec $menu
-
-    # File Manager 
-    bindsym $mod+t exec $filemanager
-
-    # Browser
-    bindsym $mod+n exec $browser
-
-    # Calculator
-    for_window [app_id="org.gnome.Calculator"] floating enable
+for_window [app_id="org.gnome.Calculator"] floating enable
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -224,16 +195,15 @@ bindsym $mod+r mode "resize"
 # Utilities:
 #
     # Special keys to adjust volume via PulseAudio
-    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+    bindsym --locked F4 exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+    bindsym --locked F2 exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+    bindsym --locked F3 exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
     bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
-    bindsym Print exec grim -g "$(slurp)" ~/Imagens/Screenshots/$(date '+%d-%m-%Y_%H-%M-%S').png
-
+    
 #
 # Status Bar:
 #
