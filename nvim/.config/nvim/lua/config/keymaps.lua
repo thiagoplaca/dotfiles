@@ -2,3 +2,9 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 
 vim.keymap.set("i", "jj", "<Esc>", { desc = "Sair do modo de inserção" })
+vim.keymap.set("n", "<leader>sg", function()
+  Snacks.picker.grep({
+    hidden = true,
+    ignored = true,
+  })
+end, { desc = "Grep (Root + Ignored)" })

@@ -6,8 +6,8 @@ exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 exec wl-paste --watch cliphist store
 
 exec swayidle -w \
-       timeout 60 'swaylock -f' \
-       timeout 100 'swaymsg "output * power off"' \
+       timeout 300 'swaylock -f' \
+       timeout 600 'swaymsg "output * power off"' \
        resume 'swaymsg "output * power on"' \
        before-sleep 'swaylock -f'
 
@@ -31,16 +31,18 @@ bindsym $mod+d exec $menu
 bindsym $mod+t exec $filemanager
 bindsym $mod+n exec $browser
 bindsym $mod+p exec cliphist list | rofi -dmenu "Clipboard"| cliphist decode | wl-copy
-bindsym F9 exec grim -g "$(slurp)" ~/Imagens/$(date '+%d-%m-%Y_%H-%M-%S').png
+bindsym F9 exec grim -g "$(slurp)" ~/Pictures/$(date '+%d-%m-%Y_%H-%M-%S').png
 bindsym $mod+Return exec $term
 
 gaps outer 5
 gaps inner 5
 
-set $fg-focus    #89b4fa
-set $bg-focus    #89b4fa
+set $fg-focus    #68c3b7
+set $bg-focus    #68c3b7
 set $text-focus  #222222
 set $indicator   #ffffff
+
+default_border pixel 3
 
 # class            border      backgr.     text         indicator   child_border
 client.focused     $fg-focus   $bg-focus   $text-focus  $indicator  $fg-focus
@@ -51,7 +53,9 @@ input type:keyboard {
    xkb_variant intl
 }
 
-for_window [app_id="org.gnome.Calculator"] floating enable
+for_window [app_id="thunar" title="^((?!Thunar).)*$"] floating enable, resize set 800 px 100 px
+for_window [app_id="org.gnome.Calculator"] floating enable 
+
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -198,6 +202,9 @@ bindsym $mod+r mode "resize"
     bindsym --locked F4 exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
     bindsym --locked F2 exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
     bindsym --locked F3 exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+
+    # Special Keys for Video Player
+    bindsym --locked $mod+period exec playerctl play-pause
     bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-

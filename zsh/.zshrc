@@ -8,11 +8,9 @@ fi
 # Alias
 alias zshrc="nvim ~/.zshrc"
 alias szshrc="source ~/.zshrc"
-alias kitty="nvim ~/.config/kitty/kitty.conf"
 alias cc="clear"
-alias dev="cd /home/thiago/Dev"
-alias studio="/home/thiago/.AUR/android-studio/bin/studio"
 alias sus="systemctl suspend"
+alias chw="cliphist wipe"
 alias keymap="setxkbmap -layout us -variant intl"
 alias abnt2="setxkbmap -model abnt2 -layout br"
 
@@ -29,6 +27,11 @@ source ~/.powerlevel10k/powerlevel10k.zsh-theme
 # Mise
 eval "$(/home/thiago/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
 
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' menu select
+
 # ZSH Syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
+
 
