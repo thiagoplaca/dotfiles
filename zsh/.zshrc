@@ -11,15 +11,26 @@ alias szshrc="source ~/.zshrc"
 alias cc="clear"
 alias sus="systemctl suspend"
 alias chw="cliphist wipe"
-alias keymap="setxkbmap -layout us -variant intl"
-alias abnt2="setxkbmap -model abnt2 -layout br"
+#alias keymap="setxkbmap -layout us -variant intl"
+#alias abnt2="setxkbmap -model abnt2 -layout br"
+
+# Audio Separator 
+as() {
+  audio-separator "$1" --model_filename UVR-MDX-NET-Inst_HQ_3.onnx
+}
+
+# ffmpeg
+to_mp3() {
+  ffmpeg -i "$1" -c:a libmp3lame -q:a 0 "${1:r}.mp3"
+}
 
 # Disable zsh correct
 unsetopt correct_all
 DISABLE_AUTO_TITLE='true'
 
 # yt-dlp
-alias ytdl="yt-dlp -o '/home/thiago/Downloads/%(title)s.%(ext)s' --merge-output-format"
+alias ytv="yt-dlp -o '/home/thiago/Downloads/%(title)s.%(ext)s' --merge-output-format"
+alias yta="yt-dlp -x --audio-format mp3"
 
 source ~/.powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

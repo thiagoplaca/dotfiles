@@ -1,15 +1,17 @@
 set $mod Mod4
 
-exec gammastep
-exec swaync
+#exec gammastep
+#exec swaync
+#exec wl-paste --watch cliphist store
+exec dms run
 exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
-exec wl-paste --watch cliphist store
 
-exec swayidle -w \
-       timeout 300 'swaylock -f' \
-       timeout 600 'swaymsg "output * power off"' \
-       resume 'swaymsg "output * power on"' \
-       before-sleep 'swaylock -f'
+
+# exec swayidle -w \
+      # timeout 300 'swaylock -f' \
+      # timeout 600 'swaymsg "output * power off"' \
+      # resume 'swaymsg "output * power on"' \
+      # before-sleep 'swaylock -f'
 
 # Home row direction keys, like vim
 set $left h
@@ -24,15 +26,21 @@ set $browser brave
 
 output HDMI-A-1 resolution 2560x1080 position 0,0
 output DP-1 resolution 1360x768 position 2560,0
-output * bg ~/.config/sway/default.jpg fill
+#output * bg ~/.config/sway/default.jpg fill
+
+# DMS
+bindsym $mod+d exec dms ipc call spotlight toggle
+bindsym $mod+p exec dms ipc call clipboard toggle
+bindsym $mod+m exec dms ipc call processlist focusOrToggle
+bindsym $mod+comma exec dms ipc call settings focusOrToggle
 
 bindsym $mod+x kill
-bindsym $mod+d exec $menu
+#bindsym $mod+d exec $menu
 bindsym $mod+t exec $filemanager
 bindsym $mod+n exec $browser
-bindsym $mod+p exec cliphist list | rofi -dmenu "Clipboard"| cliphist decode | wl-copy
-bindsym F9 exec grim -g "$(slurp)" ~/Pictures/$(date '+%d-%m-%Y_%H-%M-%S').png
 bindsym $mod+Return exec $term
+#bindsym $mod+p exec cliphist list | rofi -dmenu "Clipboard"| cliphist decode | wl-copy
+bindsym F9 exec grim -g "$(slurp)" ~/Pictures/$(date '+%d-%m-%Y_%H-%M-%S').png
 
 gaps outer 5
 gaps inner 5
@@ -198,25 +206,34 @@ bindsym $mod+r mode "resize"
 #
 # Utilities:
 #
+
+# Media keys
+# Audio controls DMS
+    bindsym F3 exec dms ipc call audio increment 5
+    bindsym F2 exec dms ipc call audio decrement 5
+    bindsym F4 exec dms ipc call audio mute
+
     # Special keys to adjust volume via PulseAudio
-    bindsym --locked F4 exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-    bindsym --locked F2 exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-    bindsym --locked F3 exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+    #bindsym --locked F4 exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+    #bindsym --locked F2 exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+    #bindsym --locked F3 exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+    #bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
 
     # Special Keys for Video Player
-    bindsym --locked $mod+period exec playerctl play-pause
-    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+    bindsym --locked $mod+Home exec playerctl play-pause
+
+    # Special Keys for Lock
+    bindsym Ctrl+l exec dms ipc call lock lock
+
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-    # Special key to take a screenshot with grim
-    
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-  swaybar_command waybar
+  swaybar_command #waybar
 }
 
 include /etc/sway/config.d/*

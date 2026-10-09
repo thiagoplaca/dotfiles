@@ -1,0 +1,281 @@
+{
+  "clockFormat": "24h",
+  "dockConfigs": [
+    {
+      "id": "dock",
+      "name": "Dock",
+      "enabled": false,
+      "screenPreferences": [
+        "all"
+      ],
+      "showOnLastDisplay": true,
+      "position": 1,
+      "mode": "compact",
+      "taskbarAlign": "center",
+      "widgetExpansion": "popout",
+      "iconSize": 40,
+      "spacing": 4,
+      "itemSpacing": 4,
+      "margin": 0,
+      "bottomGap": 0,
+      "transparency": 1,
+      "followInterfaceStyle": true,
+      "autoHide": false,
+      "smartAutoHide": false,
+      "useOverlayLayer": false,
+      "editOnRightClick": false,
+      "showOnFullscreen": false,
+      "openOnOverview": false,
+      "groupByApp": false,
+      "separatePinnedAndRunningApps": false,
+      "restoreSpecialWorkspaceOnClick": false,
+      "isolateDisplays": false,
+      "indicatorStyle": "circle",
+      "borderEnabled": false,
+      "borderColor": "surfaceText",
+      "borderOpacity": 1,
+      "borderThickness": 1,
+      "launcherEnabled": false,
+      "launcherLogoMode": "apps",
+      "launcherLogoCustomPath": "",
+      "launcherLogoColorOverride": "",
+      "launcherLogoSizeOffset": 0,
+      "launcherLogoBrightness": 0.5,
+      "launcherLogoContrast": 1,
+      "maxVisibleApps": 0,
+      "maxVisibleRunningApps": 0,
+      "showOverflowBadge": true,
+      "showTrash": false,
+      "trashFileManager": "default",
+      "trashCustomCommand": "",
+      "magnification": false,
+      "magnificationScale": 130,
+      "magnificationProfile": "parabolic",
+      "order": [],
+      "widgets": [
+        {
+          "id": "dock_launcher",
+          "widgetId": "dockLauncher",
+          "enabled": true
+        },
+        {
+          "id": "dock_apps",
+          "widgetId": "appsDock",
+          "enabled": true
+        },
+        {
+          "id": "dock_trash",
+          "widgetId": "dockTrash",
+          "enabled": true
+        }
+      ]
+    }
+  ],
+  "barElevationEnabled": false,
+  "spotlightSectionViewModes": {
+    "apps": "list"
+  },
+  "dashOptions": {
+    "media": {
+      "playerStyle": "material"
+    }
+  },
+  "acLockTimeout": 300,
+  "acSuspendTimeout": 900,
+  "acPostLockMonitorTimeout": 300,
+  "lockBeforeSuspend": true,
+  "lockAtStartup": true,
+  "screenPreferences": {
+    "lockScreen": [
+      "all"
+    ],
+    "notifications": [
+      {
+        "name": "HDMI-A-1",
+        "model": "Unknown",
+        "modelIndex": 0
+      }
+    ],
+    "notepad": [
+      {
+        "name": "HDMI-A-1",
+        "model": "Unknown",
+        "modelIndex": 0
+      }
+    ],
+    "toast": [
+      {
+        "name": "HDMI-A-1",
+        "model": "Unknown",
+        "modelIndex": 0
+      }
+    ],
+    "osd": [
+      {
+        "name": "HDMI-A-1",
+        "model": "Unknown",
+        "modelIndex": 0
+      }
+    ],
+    "wallpaper": [
+      {
+        "name": "DP-1",
+        "model": "Unknown",
+        "modelIndex": 1
+      },
+      {
+        "name": "HDMI-A-1",
+        "model": "Unknown",
+        "modelIndex": 0
+      }
+    ]
+  },
+  "barConfigs": [
+    {
+      "id": "default",
+      "name": "Main Bar",
+      "enabled": true,
+      "position": 0,
+      "screenPreferences": [
+        {
+          "name": "HDMI-A-1",
+          "model": "Unknown",
+          "modelIndex": 0
+        }
+      ],
+      "showOnLastDisplay": false,
+      "leftWidgets": [
+        {
+          "id": "launcherButton",
+          "enabled": false
+        },
+        {
+          "id": "workspaceSwitcher",
+          "enabled": true,
+          "workspaceIndicatorStyle": "pills",
+          "showWorkspaceIndex": true,
+          "showWorkspaceName": false
+        },
+        {
+          "id": "focusedWindow",
+          "enabled": true,
+          "focusedWindowShowIcon": true,
+          "focusedWindowSize": 1
+        }
+      ],
+      "centerWidgets": [
+        "music",
+        "clock",
+        "weather"
+      ],
+      "rightWidgets": [
+        "systemTray",
+        {
+          "id": "clipboard",
+          "enabled": true
+        },
+        "cpuUsage",
+        {
+          "id": "memUsage",
+          "enabled": true
+        },
+        "notificationButton",
+        "controlCenterButton"
+      ],
+      "spacing": 4,
+      "innerPadding": 4,
+      "bottomGap": 0,
+      "transparency": 1,
+      "widgetTransparency": 1,
+      "squareCorners": false,
+      "noBackground": false,
+      "gothCornersEnabled": false,
+      "gothCornerRadiusOverride": false,
+      "gothCornerRadiusValue": 12,
+      "borderEnabled": false,
+      "borderColor": "surfaceText",
+      "borderOpacity": 1,
+      "borderThickness": 1,
+      "fontScale": 1,
+      "autoHide": false,
+      "autoHideDelay": 250,
+      "openOnOverview": false,
+      "visible": true,
+      "popupGapsAuto": true,
+      "popupGapsManual": 4,
+      "followInterfaceStyle": true,
+      "widgetFollowInterfaceStyle": true,
+      "shadowIntensity": 0,
+      "attachToScreenEdge": false,
+      "dot": false,
+      "widgetStyle": "pills",
+      "islandOuterGap": 4,
+      "islandAlongOffset": 0,
+      "islandRouteDash": "island",
+      "islandRouteMedia": "island",
+      "islandRouteWeather": "island",
+      "islandRouteWallpaper": "island",
+      "islandRouteClipboard": "follow",
+      "islandRouteLauncher": "follow",
+      "islandInteractionMode": "click",
+      "islandRouteNotificationCenter": "follow",
+      "islandRouteControlCenter": "follow",
+      "island": true,
+      "islandMediaClockVisible": true,
+      "islandHomeLayout": [
+        {
+          "id": "media",
+          "enabled": true
+        },
+        {
+          "id": "clock",
+          "enabled": true
+        },
+        {
+          "id": "weather",
+          "enabled": false
+        },
+        {
+          "id": "status",
+          "enabled": false
+        },
+        {
+          "id": "volume",
+          "enabled": false
+        },
+        {
+          "id": "brightness",
+          "enabled": false
+        },
+        {
+          "id": "notifications",
+          "enabled": true
+        }
+      ]
+    }
+  ],
+  "builtInPluginSettings": {
+    "dms_qr_generator": {
+      "trigger": "qrg"
+    },
+    "dms_power": {
+      "trigger": "pw"
+    },
+    "dms_clipboard_search": {
+      "trigger": "cb"
+    },
+    "dms_settings_search": {
+      "trigger": "?"
+    },
+    "dms_settings": {
+      "enabled": true
+    }
+  },
+  "clipboardClickToPaste": true,
+  "launcherPluginVisibility": {
+    "dms_vpn": {
+      "allowWithoutTrigger": true
+    }
+  },
+  "configVersion": 36
+}
