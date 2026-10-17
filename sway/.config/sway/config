@@ -3,7 +3,8 @@ set $mod Mod4
 #exec gammastep
 #exec swaync
 #exec wl-paste --watch cliphist store
-exec dms run
+#exec dms run
+exec noctalia
 exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 
 
@@ -29,12 +30,22 @@ output DP-1 resolution 1360x768 position 2560,0
 #output * bg ~/.config/sway/default.jpg fill
 
 # DMS
-bindsym $mod+d exec dms ipc call spotlight toggle
-bindsym $mod+p exec dms ipc call clipboard toggle
-bindsym $mod+m exec dms ipc call processlist focusOrToggle
-bindsym $mod+comma exec dms ipc call settings focusOrToggle
+#bindsym $mod+d exec dms ipc call spotlight toggle
+#bindsym $mod+p exec dms ipc call clipboard toggle
+#bindsym $mod+m exec dms ipc call processlist focusOrToggle
+#bindsym $mod+comma exec dms ipc call settings focusOrToggle
 
+#space Noctalia
+set $ipc noctalia msg
+
+# Core binds
+bindsym $mod+d exec $ipc panel-toggle launcher
+bindsym $mod+m exec $ipc panel-toggle control-center
+bindsym $mod+comma exec $ipc settings-toggle
+bindsym $mod+p exec $ipc panel-toggle clipboard
+bindsym Ctrl+Alt+l exec $ipc session lock 
 bindsym $mod+x kill
+
 #bindsym $mod+d exec $menu
 bindsym $mod+t exec $filemanager
 bindsym $mod+n exec $browser
@@ -53,8 +64,8 @@ set $indicator   #ffffff
 default_border pixel 3
 
 # class            border      backgr.     text         indicator   child_border
-client.focused     $fg-focus   $bg-focus   $text-focus  $indicator  $fg-focus
-client.unfocused   #333333     #222222     #888888      #222222     #222222
+#client.focused     $fg-focus   $bg-focus   $text-focus  $indicator  $fg-focus
+#client.unfocused   #333333     #222222     #888888      #222222     #222222
 
 input type:keyboard {
    xkb_layout "us"
@@ -209,10 +220,14 @@ bindsym $mod+r mode "resize"
 
 # Media keys
 # Audio controls DMS
-    bindsym F3 exec dms ipc call audio increment 5
-    bindsym F2 exec dms ipc call audio decrement 5
-    bindsym F4 exec dms ipc call audio mute
+    #bindsym F3 exec dms ipc call audio increment 5
+    #bindsym F2 exec dms ipc call audio decrement 5
+    #bindsym F4 exec dms ipc call audio mute
 
+    # Noctalia
+    bindsym --locked F3 exec $ipc volume-up
+    bindsym --locked F2 exec $ipc volume-down
+    bindsym --locked F4 exec $ipc volume-mute
     # Special keys to adjust volume via PulseAudio
     #bindsym --locked F4 exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
     #bindsym --locked F2 exec pactl set-sink-volume \@DEFAULT_SINK@ -5%

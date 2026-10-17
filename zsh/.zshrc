@@ -5,6 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+if [[ -z "$TMUX" && -o interactive ]]; then
+  exec tmux new-session -A -s main
+fi
+
 # Alias
 alias zshrc="nvim ~/.zshrc"
 alias szshrc="source ~/.zshrc"
