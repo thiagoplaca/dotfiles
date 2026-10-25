@@ -31,3 +31,4 @@ bindings = [
 
 [debug]
 log_level = "Error"
+

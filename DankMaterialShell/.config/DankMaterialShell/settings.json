@@ -180,6 +180,10 @@
           "enabled": true
         },
         "notificationButton",
+        {
+          "id": "vpn",
+          "enabled": true
+        },
         "controlCenterButton"
       ],
       "spacing": 4,
